@@ -23,7 +23,7 @@ class App {
     } else if (handler) {
       return this.server.use(handler);
     } else {
-      return new Error("Route undefined");
+      return new Error("Route-Handler undefined");
     }
   };
 }
