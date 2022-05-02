@@ -5,7 +5,6 @@ class App {
     this.server = server;
     this._port = process.env.SERVER_PORT_NUMBER || 3031;
   }
-
   getServer = () => {
     return this.server;
   };

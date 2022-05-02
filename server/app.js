@@ -1,7 +1,14 @@
+"use strict";
+require("dotenv").config();
+const mongoose = require("mongoose");
 const App = require("./index");
-const RouteOne = require('./teacherRoute')
+const RouteOne = require("./teacherRoute");
 const express = require("express")();
+const Database = require("./db");
 let TeacherApp = new App(express);
+let serverDataBase = new Database(mongoose);
 
-TeacherApp.use('/teachers',RouteOne)
-TeacherApp.listen()
+serverDataBase.connect(process.env.DB_CONNECT_STRING);
+
+TeacherApp.use("/teachers", RouteOne);
+TeacherApp.listen();
