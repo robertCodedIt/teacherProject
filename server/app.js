@@ -7,8 +7,8 @@ const express = require("express")();
 const Database = require("./db");
 let TeacherApp = new App(express);
 let serverDataBase = new Database(mongoose);
-
-serverDataBase.connect(process.env.DB_CONNECT_STRING);
+serverDataBase.setConnectionString(process.env.DB_CONNECT_STRING)
+serverDataBase.connect();
 
 TeacherApp.use("/teachers", RouteOne);
 TeacherApp.listen();
