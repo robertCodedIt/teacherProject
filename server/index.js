@@ -1,9 +1,9 @@
 "use strict";
-
+require("dotenv").config();
 class App {
   constructor(server) {
     this.server = server;
-    this._port=3030
+    this._port = process.env.SERVER_PORT_NUMBER || 3031;
   }
 
   getServer = () => {
