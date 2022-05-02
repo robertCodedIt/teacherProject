@@ -1,7 +1,7 @@
 "use strict";
 
 class Database {
-  constructor(database, connectionString) {
+  constructor(database) {
     this.database = database;
     this._connectionString="";
   }
