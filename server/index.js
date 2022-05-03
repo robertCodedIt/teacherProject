@@ -1,9 +1,13 @@
 "use strict";
 require("dotenv").config();
+const bodyParser = require('body-parser');
+const cors = require('cors')
 class App {
   constructor(server) {
     this.server = server;
     this._port = process.env.SERVER_PORT_NUMBER || 3031;
+    this._parser=bodyParser.json()
+    this._cors = cors()
   }
   getServer = () => {
     return this.server;
