@@ -1,14 +1,25 @@
-import React from 'react'
-import './App.css';
-
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Todo from "./components/Todo";
 class App extends React.Component {
-  render(){
-    
-    return(
-    <div className="App">
-     hello from a class component called app
-    </div>
-  );
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userInit: "L",
+    };
+  }
+  render() {
+    return (
+      <>
+        <Router>
+          <Routes>
+            <Route path = "/todo" element={<Todo/>}/>
+          </Routes>
+        </Router>
+      </>
+    );
   }
 }
 
