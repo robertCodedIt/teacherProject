@@ -1,5 +1,6 @@
 "use strict";
 require("dotenv").config();
+const cors = require("cors")
 const mongoose = require("mongoose");
 const App = require("./index");
 // const postRoute = require("./postRoute");
@@ -30,7 +31,9 @@ res.send(deleted)
 })
 // RootApp.use("/newtodo",postRoute)
 
+RootApp.use(cors());
+
 RootApp.use("/gettodo", getRoute);
 // TeacherApp.use("/gettodo",getRoute)
 RootApp.listen();
-RootApp.use(RootApp._cors());
+

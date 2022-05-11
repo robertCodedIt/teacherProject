@@ -12,4 +12,75 @@ code {
     monospace;
 }
 
+.completed{
+  background:rgb(158, 231, 158);
+}
+form{
+  max-width:25%;
+  
+}
+div{
+  margin:.1rem;
+  padding:.1rem
+}
+.todo-legend{
+  font-weight:bolder;
+  font-style: italic;
+  color:blue;
+}
+nav {
+  background: #ff11ff11;
+
+display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: flex-start
+}
+nav ul{
+  display:flex;
+  flex-direction: row;
+
+  list-style: none;
+
+
+}
+.navbar-logo{
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  width:100px;
+  height:100px;
+  cursor:pointer;
+  text-align: center;
+display:grid;
+align-items:center;
+}
+
+a{
+  text-decoration:none;
+}
+li{
+  max-width:90%;
+  margin:2.4rem;
+  text-decoration:none;
+ 
+}
+.not-completed{
+  background: rgb(243, 196, 151);
+
+}
+
+
+.completed-todo-description{
+
+  color:"blue";
+  font-style: italic;
+}
+.todo-cards-div{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
 
