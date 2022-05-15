@@ -1,5 +1,7 @@
 import React from "react";
 import { MenuItems } from "./MenuItems";
+import LoginButton from '../login'
+import LogoutButton from '../logout'
 class Navbar extends React.Component {
   constructor(props) {
     super(props)
@@ -11,7 +13,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav className="NavBarItems">
-        <h1 className="navbar-logo" onClick={this.props.home}>Todo</h1>
+        <h1 className="navbar-logo" onClick={this.props.home}>{this.props.user.i}</h1>
       
         <ul>
           {MenuItems.map((item, idx) => {
@@ -25,6 +27,7 @@ class Navbar extends React.Component {
             );
           })}
         </ul>
+       { this.props.isAuthenticated?<LoginButton/>:<LogoutButton/>}
       </nav>
     );
   }

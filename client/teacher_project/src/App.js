@@ -6,52 +6,71 @@ import Todo from "./components/Todo";
 import Home from "./components/Home";
 import NewTodo from "./components/NewTodo";
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer"
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+import Footer from "./components/Footer";
+import { useState } from "react";
+import {useAuth0} from '@auth0/auth0-react';
 
-    this.state = {
-      userInit: "L",
-      todos:[]
-    };
+function App() {
+  const {
+    isLoading,
+    isAuthenticated,
+    error,
+    user,
+    loginWithRedirect,
+    logout,
+  } = useAuth0();
+  const [todos, setTodos] = useState([]);
+  const getAllTodos = async () => {
+    try {
+      const url = "http://localhost:3030/alltodos";
+      await axios
+        .get(url)
+        .then((response) => {
+          console.log(response.data);
+          setTodos(response.data);
+          return response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
-  getAllTodos = async()=>{
-    try{
-        const url = "http://localhost:3030/alltodos"
-        await axios.get(url)
-        .then((response)=>{
-            console.log(response.data)
-            this.setState({todos: response.data})
-               return response.data
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-     
-    }
-    catch(err){
-        console.log(err)
-    }
-}
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
 
-  render() {
-   
+  if (isAuthenticated) {
     return (
-      <>
-        <Navbar  />
-      
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home call={this.getAllTodos} data={this.state.todos}/>} />
-            <Route path="/todos" element={<Todo />} />
-            <Route path="/newtodo" element={<NewTodo />} />
-          </Routes>
-        </Router>
-        <Footer/>
-      </>
+      <div>
+        
+        <>
+      <Navbar />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home call={getAllTodos} data={todos} />} />
+          <Route path="/todos" element={<Todo />} />
+          <Route path="/newtodo" element={<NewTodo />} />
+        </Routes>
+      </Router>
+      <Footer />
+    </>
+        <button onClick={() => logout({ returnTo: window.location.origin })}>
+          Log out
+        </button>
+      </div>
     );
+  } else {
+    return <button onClick={loginWithRedirect}>Log in</button>;
   }
 }
+//   return (
+   
+//   );
+// }
 
 export default App;
