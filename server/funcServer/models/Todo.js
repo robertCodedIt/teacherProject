@@ -16,6 +16,10 @@ type:String,
     type:Date,
   },
   completed: { required: true, type: Boolean },
+  date_id:{
+    required:true,
+    type:String,
+  }
 
 });
 
