@@ -4,9 +4,9 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <nav className="NavBarItems">
+      <footer className="NavBarItems">
         &copy; 2022 Robert Armstrong: CodeCrew, Memphis,Tn
-      </nav>
+      </footer>
     );
   }
 }

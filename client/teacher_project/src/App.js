@@ -157,10 +157,8 @@ function App() {
             </Button>
           </Form>
         </>
-        <Button onClick={() => logout({ returnTo: window.location.origin })}>
-          Log out
-        </Button>
       
+      <div className="todoBox">
           {todos.map((el,idx)=>{return(
             
         
@@ -186,12 +184,16 @@ function App() {
            </Card>
         
         )})}
-       
+       </div>
         <Footer/>
       </div>
     );
   } else {
-    return <Button onClick={loginWithRedirect}>Log in</Button>;
+    return (<div className='notLoggedIn'>
+           <Navbar/>
+      <Button onClick={loginWithRedirect}>Log in</Button> 
+      <Footer/></div>)
+     
   }
 }
 
