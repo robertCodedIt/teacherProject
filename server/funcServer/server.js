@@ -94,7 +94,7 @@ app.put("/updatetodo/:id", cors(optionsTwo), (req, res) => {
   });
 });
 
-const port = process.env.SERVER_PORT_NUMBER || 3031;
+const port = process.env.PORT || 3031;
 // listen method
 app.listen(port, () => {
   console.log("Express server listening on port " + port + ".");
