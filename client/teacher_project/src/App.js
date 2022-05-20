@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import Profile from "./components/profile";
 function App() {
   //server url
-  const url = process.env.REACT_APP_SERVER_URL;
+  const url = process.env.REACT_APP_SERVER_URL || "https://todo-list-server-code-crew.herokuapp.com";
   // deconstruct auth obj
   const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } =
     useAuth0();
