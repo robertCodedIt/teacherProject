@@ -24,17 +24,7 @@ class Navbar extends React.Component {
             <a href="/profile">Profile</a>
           </li>
         </ul>
-        {this.props.isAuthenticated ? (
-          <Button onClick={this.props.loginWithRedirect}>Log in</Button>
-        ) : (
-          <Button
-            onClick={() =>
-              this.props.logout({ returnTo: window.location.origin })
-            }
-          >
-            Log out
-          </Button>
-        )}
+       
       </nav>
     );
   }
